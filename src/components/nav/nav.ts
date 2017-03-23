@@ -56,6 +56,7 @@ import { RootNode } from '../split-pane/split-pane';
   providers: [{provide: RootNode, useExisting: forwardRef(() => Nav) }]
 })
 export class Nav extends NavControllerBase implements AfterViewInit, RootNode {
+  
   private _root: any;
   private _hasInit: boolean = false;
 
@@ -148,18 +149,6 @@ export class Nav extends NavControllerBase implements AfterViewInit, RootNode {
    * @input {object} Any nav-params to pass to the root page of this nav.
    */
   @Input() rootParams: any;
-
-  /**
-   * @input {boolean} If true, swipe to go back is enabled.
-   */
-  @Input()
-  get swipeBackEnabled(): boolean {
-    return this._sbEnabled;
-  }
-  set swipeBackEnabled(val: boolean) {
-    this._sbEnabled = isTrueProperty(val);
-    this._swipeBackCheck();
-  }
 
   /**
    * @hidden
